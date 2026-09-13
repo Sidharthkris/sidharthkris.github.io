@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
 import { about, contact, experience, profile, skills } from "../content/site";
-import { useCountUp, useVisitorCount } from "../lib/useVisitorCount";
 import ContactCard from "./ContactCard";
 import { useLang } from "../lib/lang";
 import { Reveal, SectionHead, SplitLines } from "./primitives";
@@ -143,8 +142,6 @@ export function Experience() {
 
 export function Contact() {
   const { t, tl } = useLang();
-  const visits = useVisitorCount();
-  const shown = useCountUp(visits);
 
   return (
     <section id="contact" className="relative overflow-hidden">
@@ -173,11 +170,6 @@ export function Contact() {
           <Heart />
         </p>
         <div className="mono flex flex-wrap items-center gap-x-5 gap-y-2 text-[10.5px] text-muted-2">
-          {visits !== null && (
-            <span className="num">
-              {shown.toLocaleString("en-US")} {t(contact.visitors)}
-            </span>
-          )}
           <span>{t(contact.footer)}</span>
         </div>
       </footer>
