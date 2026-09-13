@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* Self-hosted so no visitor request reaches a font CDN. Run `npm run fonts`
+   after updating the @fontsource-variable packages. */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./assets/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./assets/fonts/inter-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Space Grotesk Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("./assets/fonts/space-grotesk-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Space Grotesk Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("./assets/fonts/space-grotesk-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("./assets/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("./assets/fonts/jetbrains-mono-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+
+@theme {
+  --color-ground: #0b1220;
+  --color-ground-2: #101a2c;
+  --color-surface: #16233d;
+  --color-ink: #e8eef7;
+  /* Both tiers clear 4.5:1 against every background in this palette;
+     muted-2 carries the 10px mono labels, so it cannot be dimmer. */
+  --color-muted: #a3b1c9;
+  --color-muted-2: #8293ad;
+  --color-signal: #00e5a0;
+  --color-agent: #7c93ff;
+  --color-agent-2: #3ed9ff;
+  --color-alarm: #ff5e5b;
+  --color-onsignal: #05231a;
+
+  --font-display: "Space Grotesk Variable", "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter Variable", Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-out-quint: cubic-bezier(0.22, 0.68, 0, 1);
+}
+
+@layer base {
+  :root {
+    --line: rgba(140, 170, 214, 0.16);
+    --line-strong: rgba(140, 170, 214, 0.34);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-onsignal);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    width: 100%;
+    height: 18px;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 1px;
+    background: var(--line-strong);
+  }
+  input[type="range"]::-moz-range-track {
+    height: 1px;
+    background: var(--line-strong);
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--color-signal);
+    margin-top: -5px;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 11px;
+    height: 11px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--color-signal);
+  }
+}
+
+@layer components {
+  .rule {
+    border-top: 1px solid var(--line);
+  }
+  .hairline {
+    border-color: var(--line);
+  }
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgba(22, 35, 61, 0.5);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--color-ink);
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      color 0.4s var(--ease-out-quint),
+      border-color 0.4s var(--ease-out-quint);
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-signal);
+    transform: translateY(101%);
+    transition: transform 0.5s var(--ease-out-quint);
+  }
+  .btn:hover {
+    color: var(--color-onsignal);
+    border-color: var(--color-signal);
+  }
+  .btn:hover::before {
+    transform: translateY(0);
+  }
+  .btn-solid {
+    background: var(--color-signal);
+    color: var(--color-onsignal);
+    border-color: var(--color-signal);
+  }
+  .btn-solid::before {
+    background: var(--color-ink);
+  }
+
+  .field {
+    width: 100%;
+    background: rgba(11, 18, 32, 0.55);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    transition:
+      border-color 0.3s var(--ease-out-quint),
+      background 0.3s var(--ease-out-quint);
+  }
+  .field::placeholder {
+    color: var(--color-muted-2);
+  }
+  .field:hover {
+    border-color: var(--line-strong);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-signal);
+    background: rgba(11, 18, 32, 0.8);
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-muted);
+    border: 1px solid var(--line);
+    padding: 4px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .h-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .mono {
+    font-family: var(--font-mono);
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

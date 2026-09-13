@@ -1,0 +1,40 @@
+{
+  "name": "sidharth-portfolio",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b --noEmit && vite build",
+    "build:single": "tsc -b --noEmit && vite build --mode single",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit",
+    "model:check": "esbuild scripts/model-check.mjs --bundle --format=esm --platform=node --outfile=node_modules/.cache/model-check.mjs --log-level=error && node node_modules/.cache/model-check.mjs",
+    "model:sweep": "esbuild scripts/model-sweep.mjs --bundle --format=esm --platform=node --outfile=node_modules/.cache/model-sweep.mjs --log-level=error && node node_modules/.cache/model-sweep.mjs",
+    "fonts": "node scripts/sync-fonts.mjs",
+    "og": "esbuild scripts/og-state.mjs --bundle --format=esm --platform=node --outfile=node_modules/.cache/og-state.mjs --log-level=error && python3 scripts/make-og.py"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "lenis": "^1.3.11",
+    "motion": "^13.2.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.3",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}
