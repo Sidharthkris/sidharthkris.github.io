@@ -553,7 +553,6 @@ export const contact = {
     en: "Made with care by",
     de: "Mit Sorgfalt gebaut von",
   } as L,
-  visitors: { en: "visits", de: "Besuche" } as L,
   toTop: { en: "Back to top", de: "Nach oben" } as L,
   footer: {
     en: "React 19 · TypeScript · Three.js · Tailwind. The crowd up top is a live model, not a video.",
